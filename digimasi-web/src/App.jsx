@@ -368,15 +368,14 @@ export default function DigimasiLandingPage() {
             <div className="absolute -inset-4 rounded-[2.5rem] bg-[#17df64]/20 blur-2xl" />
             <div className="relative rounded-[2rem] border border-[#e7ddc8] bg-white/80 p-3 shadow-2xl shadow-green-900/10 backdrop-blur-xl">
               <div className="aspect-video overflow-hidden rounded-[1.5rem] bg-gradient-to-br from-[#244536] via-[#2c6b4b] to-[#17df64]">
-                <div className="grid h-full place-items-center bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.24),transparent_35%)] p-8 text-center text-white">
-                  <div>
-                    <div className="mx-auto mb-5 grid h-20 w-20 place-items-center rounded-full border border-white/30 bg-white/15 backdrop-blur">
-                      <PlayCircle size={42} />
-                    </div>
-                    <p className="text-2xl font-bold">Background Video Showcase</p>
-                    <p className="mt-2 text-sm text-white/75">Nanti bisa diganti video animasi terbaik autoplay loop.</p>
-                  </div>
-                </div>
+                <video
+                  src="/videos/hero-showcase.mp4"
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  className="h-full w-full object-cover"
+                />
               </div>
             </div>
           </motion.div>
