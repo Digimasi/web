@@ -35,7 +35,7 @@ const canvaPackages = [
     name: "Paket 1",
     subtitle: "Cocok untuk tugas sekolah sederhana",
     price: 30000,
-    video: "/videos/PAKET1.mp4",
+    video: "/videos/PAKET3.mp4",
     desc: "Video animasi seperti PPT, dominan teks, dan satu karakter pembicara.",
     note: "Tidak ada scene/alur cerita.",
     examples: [
@@ -59,7 +59,7 @@ const canvaPackages = [
     name: "Paket 3",
     subtitle: "Cocok untuk tugas LATSAR, Edukasi Kesehatan Kompleks",
     price: 90000,
-    video: "/videos/PAKET3.mp4",
+    video: "/videos/PAKET1.mp4",
     desc: "Video animasi membutuhkan aset dari luar Canva.",
     note: "Aset bisa dari AI, Google, atau sumber visual tambahan lain.",
     examples: [
