@@ -421,49 +421,6 @@ export default function DigimasiLandingPage() {
                 <p className="mt-4 rounded-2xl bg-[#f7f4ec] p-4 text-sm font-bold leading-6 text-[#244536]/65">
                   {item.note}
                 </p>
-                <div className="mt-5">
-                  <p className="mb-3 text-sm font-bold text-[#244536]">
-                    Contoh video:
-                  </p>
-
-                  <div className="grid gap-3">
-                    {item.examples.map((example) => (
-                      <div
-                        key={example.title}
-                        className="overflow-hidden rounded-2xl border border-[#e7ddc8] bg-[#f7f4ec]"
-                      >
-                        <div className="relative aspect-video overflow-hidden bg-[#244536]">
-                          {example.video ? (
-                            <video
-                              src={example.video}
-                              className="h-full w-full object-cover"
-                              muted
-                              loop
-                              playsInline
-                              preload="metadata"
-                            />
-                          ) : (
-                            <div className="grid h-full w-full place-items-center bg-gradient-to-br from-[#244536] to-[#17df64] text-white">
-                              <PlayCircle size={34} />
-                            </div>
-                          )}
-
-                          <div className="absolute inset-0 grid place-items-center bg-black/10">
-                            <div className="grid h-10 w-10 place-items-center rounded-full bg-white/80 text-[#244536]">
-                              <PlayCircle size={24} />
-                            </div>
-                          </div>
-                        </div>
-
-                        <div className="p-3">
-                          <p className="text-sm font-bold text-[#244536]">
-                            {example.title}
-                          </p>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
               </div>
             ))}
           </div>
