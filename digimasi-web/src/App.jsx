@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import {
   ArrowRight,
@@ -213,6 +213,30 @@ export default function DigimasiLandingPage() {
   const [selectedDesign, setSelectedDesign] = useState("poster");
   const [quantity, setQuantity] = useState(1);
   const [selectedAddons, setSelectedAddons] = useState([]);
+  const heroVideoRef = useRef(null);
+  const [heroMuted, setHeroMuted] = useState(true);
+
+  useEffect(() => {
+    const video = heroVideoRef.current;
+    if (!video) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          video.play().catch(() => {});
+        } else {
+          video.pause();
+          video.muted = true;
+          setHeroMuted(true);
+        }
+      },
+      { threshold: 0.45 }
+    );
+
+    observer.observe(video);
+
+    return () => observer.disconnect();
+  }, []);
   const currentDesign =
     designGraphicItems.find((item) => item.id === selectedDesign) ||
     designGraphicItems[0];
@@ -371,14 +395,32 @@ export default function DigimasiLandingPage() {
             <div className="absolute -inset-4 rounded-[2.5rem] bg-[#17df64]/20 blur-2xl" />
             <div className="relative rounded-[2rem] border border-[#e7ddc8] bg-white/80 p-3 shadow-2xl shadow-green-900/10 backdrop-blur-xl">
               <div className="aspect-video overflow-hidden rounded-[1.5rem] bg-gradient-to-br from-[#244536] via-[#2c6b4b] to-[#17df64]">
-                <video
-                  src="/videos/hero-showcase.mp4"
-                  autoPlay
-                  muted
-                  loop
-                  playsInline
-                  className="h-full w-full object-cover"
-                />
+                <div className="relative h-full w-full">
+                  <video
+                    ref={heroVideoRef}
+                    src="/videos/hero-showcase.mp4"
+                    autoPlay
+                    muted={heroMuted}
+                    loop
+                    playsInline
+                    className="h-full w-full object-cover"
+                  />
+
+                  <button
+                    type="button"
+                    onClick={() => {
+                      const video = heroVideoRef.current;
+                      if (!video) return;
+
+                      video.muted = !video.muted;
+                      setHeroMuted(video.muted);
+                      video.play().catch(() => {});
+                    }}
+                    className="absolute bottom-4 right-4 rounded-full bg-white/90 px-4 py-2 text-sm font-bold text-[#244536] shadow-lg"
+                  >
+                    {heroMuted ? "Nyalakan Suara" : "Matikan Suara"}
+                  </button>
+                </div>
               </div>
             </div>
           </motion.div>
@@ -410,10 +452,8 @@ export default function DigimasiLandingPage() {
                 <div className="mt-5 overflow-hidden rounded-2xl">
                   <video
                     src={item.video}
-                    autoPlay
-                    muted
-                    loop
-                    playsInline
+                    controls
+                    preload="metadata"
                     className="aspect-video w-full object-cover"
                   />
                 </div>
