@@ -451,7 +451,7 @@ export default function DigimasiLandingPage() {
                 </p>
                 <div className="mt-5 overflow-hidden rounded-2xl">
                   <video
-                    src={item.video}
+                    src={item.video + "#t=1"}
                     controls
                     preload="metadata"
                     className="aspect-video w-full object-cover"
