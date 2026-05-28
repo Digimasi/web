@@ -35,6 +35,7 @@ const canvaPackages = [
     name: "Paket 1",
     subtitle: "Cocok untuk tugas sekolah sederhana",
     price: 30000,
+    video: "/videos/paket1.mp4",
     desc: "Video animasi seperti PPT, dominan teks, dan satu karakter pembicara.",
     note: "Tidak ada scene/alur cerita.",
     examples: [
@@ -46,6 +47,7 @@ const canvaPackages = [
     name: "Paket 2",
     subtitle: "Cocok untuk tugas kampus yang masih simpel",
     price: 60000,
+    video: "/videos/paket2.mp4",
     desc: "Video animasi dibuat melalui Canva tanpa aset luar seperti Google atau AI.",
     note: "Karakter pembicara bisa lebih dari 1.",
     examples: [
@@ -57,6 +59,7 @@ const canvaPackages = [
     name: "Paket 3",
     subtitle: "Cocok untuk tugas LATSAR, Edukasi Kesehatan Kompleks",
     price: 90000,
+    video: "/videos/paket3.mp4",
     desc: "Video animasi membutuhkan aset dari luar Canva.",
     note: "Aset bisa dari AI, Google, atau sumber visual tambahan lain.",
     examples: [
@@ -404,6 +407,16 @@ export default function DigimasiLandingPage() {
                 <p className="mt-2 text-sm font-bold leading-6 text-[#17c95b]">
                   {item.subtitle}
                 </p>
+                <div className="mt-5 overflow-hidden rounded-2xl">
+                  <video
+                    src={item.video}
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                    className="aspect-video w-full object-cover"
+                  />
+                </div>
                 <p className="mt-4 leading-7 text-[#244536]/65">{item.desc}</p>
                 <p className="mt-4 rounded-2xl bg-[#f7f4ec] p-4 text-sm font-bold leading-6 text-[#244536]/65">
                   {item.note}
